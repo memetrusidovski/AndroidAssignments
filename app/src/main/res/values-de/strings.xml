@@ -5,4 +5,5 @@
     <string name="ButtonText">Das Button!</string>
     <string name="password" >Das Password</string>
     <string name="Login" >Das Login</string>
+    <string name="checkbox">Das Check</string>
 </resources>

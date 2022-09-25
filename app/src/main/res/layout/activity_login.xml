@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="250dp"
+
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:gravity="center"
+
+    android:orientation="vertical"
     tools:context=".LoginActivity">
 
 
@@ -12,32 +18,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/Login"
-        android:translationY="300px" />
+        android:text="@string/Login" />
+
 
     <EditText
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
         android:layout_weight="1"
         android:hint="login name"
         android:inputType="textEmailAddress"
-        android:text="TextView" />
+        android:text=""
+        android:textColorHint="#757575" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/password" />
 
     <EditText
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:hint="login name"
+        android:hint="password"
         android:inputType="textPassword"
-        android:text="TextView" />
+        android:text="" />
 
 </LinearLayout>
