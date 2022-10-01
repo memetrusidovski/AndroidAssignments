@@ -22,7 +22,7 @@
 
 
     <EditText
-        android:id="@+id/textView2"
+        android:id="@+id/emailBox"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_weight="1"
@@ -39,12 +39,21 @@
         android:text="@string/password" />
 
     <EditText
-        android:id="@+id/textView4"
+        android:id="@+id/passwordBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:hint="password"
         android:inputType="textPassword"
         android:text="" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:onClick="onLogin"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="396dp" />
 
 </LinearLayout>

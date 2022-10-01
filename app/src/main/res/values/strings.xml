@@ -5,4 +5,8 @@
     <string name="password" >Password</string>
     <string name="Login" >Login</string>
     <string name="checkbox">Check</string>
+    <string name="dialog_message">Does you want to exit?</string>
+    <string name="dialog_title">Exit</string>
+    <string name="ok">Yes</string>
+    <string name="cancel">No</string>
 </resources>

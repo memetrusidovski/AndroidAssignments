@@ -31,8 +31,10 @@
         android:layout_row="1"
         android:layout_column="0"
         android:layout_columnWeight="1"
+        android:checked="false"
         android:gravity="fill"
         android:minHeight="48dp"
+        android:onClick="setOnCheckedChanged"
         android:text="What does this do?"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_column="1"
+        android:onClick="OnCheckChanged"
         android:text="@string/checkbox" />
 
 
@@ -52,9 +55,9 @@
         android:layout_row="1"
         android:layout_column="1"
         android:contentDescription="a picture of a camera"
-        android:gravity="fill"
-        android:src="@android:drawable/ic_menu_camera"
-        />
+        android:gravity="center"
+        android:onClick="openCamera"
+        android:src="@android:drawable/ic_menu_camera" />
 
 
 </GridLayout>
