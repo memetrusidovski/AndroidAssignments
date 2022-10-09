@@ -10,4 +10,5 @@
     <string name="dialog_title">Das Exit</string>
     <string name="ok">ja</string>
     <string name="cancel">NEIN!!</string>
+    <string name="chat_button">Das Chat</string>
 </resources>

@@ -66,13 +66,13 @@ public class LoginActivity extends AppCompatActivity {
         Log.i("login",s);
 
         if(isValidEmail(s) && !p.isEmpty()){
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("email", ((EditText) findViewById(R.id.emailBox)).getText().toString());
-        editor.apply();
+            SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("email", ((EditText) findViewById(R.id.emailBox)).getText().toString());
+            editor.apply();
 
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
         }else{
             ((TextView)findViewById(R.id.textView)).setText("There a problem with your email or password!");
         }
@@ -80,5 +80,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    }
+
+    public static boolean isEmpty(String s){
+        return s.isEmpty();
     }
 }

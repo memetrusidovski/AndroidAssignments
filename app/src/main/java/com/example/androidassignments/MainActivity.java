@@ -2,6 +2,7 @@ package com.example.androidassignments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         toaster(messagePassed);
 
-        if(requestCode == 10)
+        if(requestCode == 10 && responseCode == Activity.RESULT_OK)
             Log.i(ACTIVITY_NAME, "Returned to MainActivity.onActivityResult");
         else
             Log.i(ACTIVITY_NAME, "Code is wrong");
@@ -42,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
     public void toaster(String s){
         Toast.makeText(this, s, Toast.LENGTH_SHORT)
             .show();
+    }
+
+    public void startChat(View v){
+        Log.i(ACTIVITY_NAME, "User clicked Start Chat");
+
+        Intent intent = new Intent(MainActivity.this, ChatWindow.class);
+        startActivity(intent);
     }
 
     @Override
