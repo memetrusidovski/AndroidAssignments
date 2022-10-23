@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
             Log.i(ACTIVITY_NAME, "Returned to MainActivity.onActivityResult");
         else
             Log.i(ACTIVITY_NAME, "Code is wrong");
+    }
+
+    public void openToolbar(View v){
+        Intent intent = new Intent(this, TestToolbar.class);
+        startActivity(intent);
     }
 
     public void toaster(String s){

@@ -11,4 +11,7 @@
     <string name="ok">ja</string>
     <string name="cancel">NEIN!!</string>
     <string name="chat_button">Das Chat</string>
+    <string name="pick_color">Vould ü like to das exit?</string>
+    <string name="title_activity_test_toolbar">Das TestToolbar</string>
+    <string name="new_mess">Das New Message</string>
 </resources>

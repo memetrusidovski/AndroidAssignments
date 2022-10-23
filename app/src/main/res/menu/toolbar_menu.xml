@@ -22,7 +22,6 @@
 
     <item android:id="@+id/action_four"
         android:title="Choice Four"
-        android:icon="@drawable/icons8_refresh_24"
-        android:orderInCategory="103"
+        android:orderInCategory="104"
         app:showAsAction="never" />
 </menu>

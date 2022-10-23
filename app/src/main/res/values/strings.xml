@@ -10,6 +10,9 @@
     <string name="ok">Yes</string>
     <string name="cancel">No</string>
     <string name="chat_button">Start Chat</string>
+    <string name="pick_color">Would you like to exit?</string>
+    <string name="new_mess">New Message</string>
+
     <string name="title_activity_test_toolbar">TestToolbar</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
