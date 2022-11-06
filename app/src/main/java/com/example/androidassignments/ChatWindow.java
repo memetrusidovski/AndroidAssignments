@@ -3,6 +3,8 @@ package com.example.androidassignments;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.sql.SQLData;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,8 @@ public class ChatWindow extends AppCompatActivity {
     ListView listView = null;
     EditText messageBox = null;
     Button send = null;
+    SQLiteDatabase db;
+    ChatDatabaseHelper CDH;
 
     ArrayList<String> chat = new ArrayList<String>();
     ChatAdapter adapter ;// new ChatAdapter(this, R.layout.activity_chat_window, chat);
@@ -42,10 +47,37 @@ public class ChatWindow extends AppCompatActivity {
         adapter = messageAdapter;
         listView.setAdapter (messageAdapter);
 
+        CDH = new ChatDatabaseHelper(this);
+
+        db = CDH.getReadableDatabase();
+
+
+        //db.execSQL("INSERT INTO demo (KEY_MESSAGE) VALUES (\"message\");");
+        Cursor cursor = db.rawQuery("SELECT * FROM demo", null);
+
+        cursor.moveToFirst();
+        while(cursor.moveToNext() ) {
+            int x = cursor.getColumnIndex("KEY_MESSAGE");
+            String s = cursor.getString(x);
+            chat.add(s);
+            Log.d("Database", s);
+        }
+
+        Log.i("Database", "Cursor’s  column count =" + cursor.getColumnCount() );
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
+        CDH.close();
     }
 
     public void send(View v){
-        chat.add( messageBox.getText().toString() );
+        String s =  messageBox.getText().toString();
+        chat.add(s);
+        db.execSQL("INSERT INTO demo (key_message) VALUES (\"" + s +"\");");
         adapter.notifyDataSetChanged(); //this restarts the process of
 
         Log.d("Chat", chat.get(0).toString());
