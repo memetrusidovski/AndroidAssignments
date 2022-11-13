@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
             Log.i(ACTIVITY_NAME, "Code is wrong");
     }
 
+    public void openWeather(View v){
+        Intent intent = new Intent(MainActivity.this, WeatherForecast.class);
+        startActivity(intent);
+    }
+
     public void openToolbar(View v){
         Intent intent = new Intent(this, TestToolbar.class);
         startActivity(intent);
