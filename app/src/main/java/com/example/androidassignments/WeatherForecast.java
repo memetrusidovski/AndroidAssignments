@@ -1,5 +1,6 @@
 package com.example.androidassignments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,9 +12,12 @@ import android.os.Environment;
 import android.util.Log;
 import android.util.Xml;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.navigation.ui.AppBarConfiguration;
@@ -51,6 +55,17 @@ public class WeatherForecast extends AppCompatActivity {
         pb.setVisibility(View.VISIBLE);
         pb.setMax(100);
         pb.setProgress(0);
+
+        //get the spinner from the xml.
+        Spinner dropdown = findViewById(R.id.spinner1);
+        //  create a list of items for the spinner.
+        String[] items = new String[]{"ottawa", "kitchener", "toronto"};
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+          //set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(new SpinnerActivity());
 
         new ForecastQuery().execute("https://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=e7e6f4323f7764d5bc2b4d723cbe2c75&mode=xml&units=metric");
 
@@ -98,6 +113,7 @@ public class WeatherForecast extends AppCompatActivity {
             t1.setText("Current Temp: " + current);
             t2.setText("Min Temp: " + min);
             t3.setText("Max Temp: " + max);
+            pb.setVisibility(View.INVISIBLE);
         }
 
         @Override
@@ -225,6 +241,21 @@ public class WeatherForecast extends AppCompatActivity {
             return bitmap;
         }
 
+    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
+        public void onItemSelected(AdapterView<?> parent, View view,
+                                   int pos, long id) {
+            // An item was selected. You can retrieve the selected item using
+            // parent.getItemAtPosition(pos)
+            String s = (String) parent.getItemAtPosition(pos);
+
+            new ForecastQuery().execute("https://api.openweathermap.org/data/2.5/weather?q="+ s +",ca&APPID=e7e6f4323f7764d5bc2b4d723cbe2c75&mode=xml&units=metric");
+
+        }
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Another interface callback
+        }
+    }
 
 }

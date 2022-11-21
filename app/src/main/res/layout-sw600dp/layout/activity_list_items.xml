@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:rowCount="2"
+
+    android:padding="4dp"
+    >
+
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:gravity="fill"
+        android:text="RadioButton" />
+
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:checked="false"
+        android:gravity="fill"
+        android:minHeight="48dp"
+        android:onClick="setOnCheckedChanged"
+        android:text="What does this do?"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <CheckBox
+        android:id="@+id/checkbox_meat"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:onClick="OnCheckChanged"
+        android:text="@string/checkbox" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:contentDescription="a picture of a camera"
+        android:gravity="center"
+        android:onClick="openCamera"
+        android:src="@android:drawable/ic_menu_camera" />
+
+
+</GridLayout>

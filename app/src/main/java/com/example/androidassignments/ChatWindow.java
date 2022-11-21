@@ -2,7 +2,9 @@ package com.example.androidassignments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,9 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,6 +31,8 @@ public class ChatWindow extends AppCompatActivity {
     Button send = null;
     SQLiteDatabase db;
     ChatDatabaseHelper CDH;
+    boolean isOpen = false;
+    long i = 0;
 
     ArrayList<String> chat = new ArrayList<String>();
     ChatAdapter adapter ;// new ChatAdapter(this, R.layout.activity_chat_window, chat);
@@ -37,8 +43,45 @@ public class ChatWindow extends AppCompatActivity {
         setContentView(R.layout.activity_chat_window);
 
         Log.d("Chat", "Open");
+        FrameLayout frame = (FrameLayout)findViewById(R.id.frame);
+        if(frame != null) isOpen = true;
 
         listView = (ListView) findViewById(R.id.messageList);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                if(isOpen){
+
+                }else{
+                    i = getItemId(position);
+
+                    Cursor cursor = db.rawQuery("SELECT * FROM demo", null);
+
+                    cursor.moveToPosition((int)i);
+                    int x = cursor.getColumnIndex("KEY_MESSAGE");
+
+
+                    Log.d("test", "->" + cursor.getString(x));
+
+                    Intent intent = new Intent(ChatWindow.this, MessageDetails.class);
+                    intent.putExtra("message", cursor.getString(x));
+                    intent.putExtra("id", i);
+
+                    int LAUNCH_SECOND_ACTIVITY = 10;
+                    startActivityForResult(intent, LAUNCH_SECOND_ACTIVITY);
+
+                    //startActivity(intent);
+                }
+                Log.i("test", "clicked");
+
+            }
+
+
+        });
+
         messageBox = (EditText) findViewById(R.id.messageBox);
         send = (Button) findViewById(R.id.send);
 
@@ -65,6 +108,34 @@ public class ChatWindow extends AppCompatActivity {
 
         Log.i("Database", "Cursor’s  column count =" + cursor.getColumnCount() );
 
+
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int responseCode, Intent data){
+        super.onActivityResult(requestCode,responseCode,data);
+
+        String messagePassed = data.getStringExtra("Response");
+
+
+        if(requestCode == 10 && responseCode == Activity.RESULT_OK)
+        {
+            String item = (String) adapter.getItem((int)i -1);
+            adapter.remove(item);
+        }
+
+    }
+
+    public long getItemId(int position){
+        long i = 0;
+
+        Cursor cursor = db.rawQuery("SELECT * FROM demo", null);
+
+        cursor.moveToPosition(position);
+        i = cursor.getLong(0);
+
+        return i;
     }
 
     @Override

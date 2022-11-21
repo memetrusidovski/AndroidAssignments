@@ -25,4 +25,6 @@
     <string name="title_activity_weather_forecast">WeatherForecast</string>
     <string name="connection_error">io error</string>
     <string name="xml_error">XML parser error</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
